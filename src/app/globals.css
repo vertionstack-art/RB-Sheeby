@@ -1,0 +1,304 @@
+@import "tailwindcss";
+/* A pasta do projeto tem espaço no nome ("RB Sheeny"): sem esta linha o Tailwind 4 não gera classes customizadas. */
+@source "../**/*.{ts,tsx}";
+
+@theme {
+  --color-ink: #16120f;
+  --color-ink-soft: #2b2522;
+  --color-paper: #ffffff;
+  --color-stone: #f2f0ed;
+  --color-line: #e2ddd8;
+  --color-muted: #625b58;
+  --color-red: #a12032;
+  --color-red-deep: #83192a;
+  --color-red-tint: #f6e7e9;
+  --color-whats: #25d366;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    color-scheme: light;
+    interpolate-size: allow-keywords;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-red);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 3px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    caret-color: var(--color-red);
+  }
+
+  button,
+  a,
+  [role="button"],
+  summary {
+    touch-action: manipulation;
+  }
+
+  button,
+  [role="button"],
+  summary,
+  .chip {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  html {
+    scrollbar-color: #c9c2bd transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Títulos largos, na mesma família do letreiro da logo */
+  .display {
+    font-variation-settings: "wdth" 118;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+
+  .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-variation-settings: normal;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3.25rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.125rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease,
+      transform 160ms var(--ease-out);
+  }
+  .chip:active {
+    transform: scale(0.97);
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: #fff;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .chip[aria-pressed="false"]:hover {
+      border-color: var(--color-ink);
+    }
+  }
+
+  .field {
+    width: 100%;
+    min-height: 3.25rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-stone);
+    padding: 0 1rem;
+    color: var(--color-ink);
+    border-radius: 0;
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease;
+  }
+  .field::placeholder {
+    color: #857d79;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-ink);
+    background: #fff;
+  }
+  .field[aria-invalid="true"] {
+    border-color: var(--color-red);
+    background: var(--color-red-tint);
+  }
+  textarea.field {
+    padding: 0.875rem 1rem;
+    resize: vertical;
+    min-height: 7.5rem;
+  }
+  select.field {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2316120f' stroke-width='1.6' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.75rem;
+  }
+
+  /* Entrada do topo: em cascata, roda sem esperar JavaScript */
+  .rise {
+    animation: rise 900ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+  }
+  .hero-photo {
+    animation: settle 1800ms var(--ease-out) both;
+  }
+
+  /* Fotos do portfólio: aproximação lenta só com mouse */
+  .zoom-img {
+    transition: transform 900ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .zoom-img {
+      transform: scale(1.04);
+    }
+  }
+
+  /* Faixa das incorporadoras */
+  .marquee-track {
+    animation: marquee 38s linear infinite;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Sanfona dos motivos: <details> exclusivo, abre com altura animada onde o navegador suporta */
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 320ms var(--ease-out),
+      content-visibility 320ms allow-discrete;
+  }
+  .faq[open]::details-content {
+    block-size: auto;
+  }
+  .faq .faq-icon {
+    transition: transform 240ms var(--ease-out);
+  }
+  .faq[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise,
+    .hero-photo {
+      animation: none;
+    }
+    .marquee-track {
+      animation: none;
+    }
+    .faq::details-content {
+      transition: none;
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Troca de filtro do portfólio: os cards deslizam para o novo lugar */
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-in-out);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
