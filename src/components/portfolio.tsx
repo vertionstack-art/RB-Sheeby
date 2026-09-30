@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { avisoIlustrativas, whatsappLink, type Projeto } from "@/content/site";
 import { contagem, IncorporadoraSelect, TipoChips, useFiltro } from "./portfolio-filter";
-import { ArrowDown, ArrowUpRight } from "./icons";
+import { ArrowDown, WhatsApp } from "./icons";
 
 const slug = (s: string) =>
   s
@@ -19,20 +19,20 @@ export function HeroFilterCard() {
   const { lista } = useFiltro();
   return (
     <div
-      className="rise grid gap-5 bg-white p-5 text-ink shadow-[0_24px_60px_-20px_rgba(22,18,15,0.35)] sm:p-7 md:grid-cols-[auto_minmax(220px,1fr)_auto] md:items-end md:gap-8"
+      className="rise grid gap-5 bg-white p-5 text-ink shadow-[0_24px_60px_-20px_rgba(22,18,15,0.35)] sm:p-7 md:grid-cols-[auto_minmax(220px,1fr)_auto] md:items-end md:gap-8 md:py-6"
       style={{ ["--i" as string]: 5 }}
     >
       <div>
-        <p className="mb-3 text-sm font-medium text-muted">Tipo de projeto</p>
-        <TipoChips />
+        <p className="mb-3 text-sm leading-5 font-medium text-muted">Tipo de projeto</p>
+        <TipoChips compacto />
       </div>
       <div>
-        <label htmlFor="inc-topo" className="mb-3 block text-sm font-medium text-muted">
+        <label htmlFor="inc-topo" className="mb-3 block text-sm leading-5 font-medium text-muted">
           Incorporadora
         </label>
-        <IncorporadoraSelect id="inc-topo" />
+        <IncorporadoraSelect id="inc-topo" compacto />
       </div>
-      <a href="#portfolio" className="btn bg-ink text-white hover:bg-ink-soft">
+      <a href="#portfolio" className="btn bg-ink text-white hover:bg-ink-soft md:min-h-11">
         Ver {contagem(lista.length).toLowerCase()}
         <ArrowDown className="size-[18px]" />
       </a>
@@ -43,8 +43,9 @@ export function HeroFilterCard() {
 type Variante = "destaque" | "lado" | "grade" | "metade" | "inteiro";
 
 const layout: Record<Variante, { proporcao: string; colunas: string }> = {
-  destaque: { proporcao: "aspect-[4/3] md:aspect-[16/11]", colunas: "md:col-span-7" },
-  lado: { proporcao: "aspect-[4/3] md:aspect-square", colunas: "md:col-span-5" },
+  // Na linha de destaque, os dois cards têm a mesma altura para os títulos alinharem.
+  destaque: { proporcao: "aspect-[4/3] md:aspect-auto md:h-[min(38vw,540px)]", colunas: "md:col-span-7" },
+  lado: { proporcao: "aspect-[4/3] md:aspect-auto md:h-[min(38vw,540px)]", colunas: "md:col-span-5" },
   grade: { proporcao: "aspect-[4/5]", colunas: "md:col-span-4" },
   metade: { proporcao: "aspect-[4/5] md:aspect-[4/3]", colunas: "md:col-span-6" },
   inteiro: { proporcao: "aspect-[4/5] md:aspect-[21/9]", colunas: "md:col-span-12" },
@@ -72,6 +73,7 @@ function Card({ p, variante }: { p: Projeto; variante: Variante }) {
         href={whatsappLink(`Olá! Vi o projeto "${p.nome}" no site da RB Sheeny e quero conversar sobre um lançamento.`)}
         target="_blank"
         rel="noopener"
+        aria-label={`${p.nome}: conversar sobre este projeto no WhatsApp`}
         className="block"
       >
         <div className={`relative overflow-hidden bg-ink-soft ${proporcao}`}>
@@ -84,6 +86,13 @@ function Card({ p, variante }: { p: Projeto; variante: Variante }) {
           />
           <span className="absolute top-4 left-4 bg-white px-3 py-2 text-xs font-semibold tracking-[0.06em] text-ink uppercase">
             {rotuloTipo(p)}
+          </span>
+          <span
+            aria-hidden
+            className="absolute bottom-3 left-3 inline-flex translate-y-1.5 items-center gap-2 rounded-full bg-red px-4 py-2.5 text-sm font-semibold text-white opacity-0 transition-[opacity,translate] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-has-[:focus-visible]:translate-y-0 group-has-[:focus-visible]:opacity-100"
+          >
+            <WhatsApp className="size-4" />
+            Conversar sobre este projeto
           </span>
           {p.ilustrativa && (
             <span className="absolute right-3 bottom-3 bg-ink/70 px-2 py-1 text-[11px] font-medium text-white/90">
@@ -100,8 +109,11 @@ function Card({ p, variante }: { p: Projeto; variante: Variante }) {
             </h3>
             <p className="mt-1 text-[0.9375rem] text-muted">{detalhes}</p>
           </div>
-          <span className="mt-1 grid size-10 shrink-0 place-items-center rounded-full border border-line transition-[background-color,border-color,color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white">
-            <ArrowUpRight className="size-[18px]" />
+          <span
+            aria-hidden
+            className="mt-1 grid size-10 shrink-0 place-items-center rounded-full border border-line transition-[background-color,border-color,color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white"
+          >
+            <WhatsApp className="size-[18px]" />
           </span>
         </div>
       </a>

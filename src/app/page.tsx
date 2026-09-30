@@ -9,6 +9,7 @@ import {
   credito,
   empresa,
   escritoriosInteriores,
+  fotosApoio,
   hero,
   incorporadoras,
   motivos,
@@ -44,14 +45,15 @@ export default function Home() {
       <main id="conteudo">
         {/* Topo */}
         <section id="topo" aria-labelledby="titulo" className="relative text-white">
-          <div className="relative flex min-h-[max(680px,100svh)] bg-ink flex-col justify-end overflow-hidden px-4 pt-28 pb-[clamp(8rem,20vh,11rem)] sm:px-8 md:pb-44">
+          {/* No computador o topo desconta a altura do cartão de filtro, para ele caber inteiro na primeira tela. */}
+          <div className="relative flex min-h-[max(680px,100svh)] flex-col justify-end overflow-hidden bg-ink px-4 pt-28 pb-[clamp(8rem,20vh,11rem)] sm:px-8 md:min-h-[max(620px,calc(100svh-64px))] md:pb-40">
             <Image
               src={hero.foto}
               alt={hero.alt}
               fill
               priority
-              sizes="100vw"
-              className="hero-photo object-cover opacity-80"
+              sizes="(max-aspect-ratio: 1/1) 230vh, 100vw"
+              className="hero-photo object-cover object-[72%_60%] opacity-80 md:object-center"
             />
             <div
               aria-hidden
@@ -124,13 +126,18 @@ export default function Home() {
               <h2 id="sobre-titulo" className="sr-only">
                 Sobre a RB Sheeny
               </h2>
-              <Image
-                src="/brand/rb-logo-preta.png"
-                alt="RB Sheeny Construções e Engenharia"
-                width={1080}
-                height={492}
-                className="h-auto w-[min(240px,60%)]"
-              />
+              <div className="relative aspect-[4/5] overflow-hidden bg-stone md:aspect-auto md:h-full md:min-h-[420px]">
+                <Image
+                  src={fotosApoio.sobre.foto}
+                  alt={fotosApoio.sobre.alt}
+                  fill
+                  sizes="(min-width: 768px) 32vw, 100vw"
+                  className="object-cover"
+                />
+                <span className="absolute right-3 bottom-3 bg-ink/70 px-2 py-1 text-[11px] font-medium text-white/90">
+                  Imagem ilustrativa
+                </span>
+              </div>
             </div>
             <div className="md:col-span-8">
               <p className="text-[clamp(1.625rem,3.3vw,2.625rem)] leading-[1.2] font-normal tracking-[-0.02em]">
@@ -187,28 +194,45 @@ export default function Home() {
                     <Destaque texto={s.titulo} palavra={s.destaque} />
                   </h3>
                   <p className="max-w-[48ch] text-[1.0625rem] leading-relaxed text-white/75">{s.texto}</p>
+                  {s.id === "decorados" && (
+                    <p className="max-w-[48ch] border-t border-white/15 pt-6 text-[1.0625rem] leading-relaxed text-white/75">
+                      Já executamos projetos de escritórios como{" "}
+                      <strong className="font-semibold text-white">{escritoriosInteriores.join(" e ")}</strong>, com o
+                      desenho respeitado como ele foi pensado.
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
-            <p className="mt-16 max-w-[60ch] border-t border-white/15 pt-8 text-[1.0625rem] leading-relaxed text-white/75">
-              Nos decorados, trabalhamos lado a lado com escritórios de interiores como{" "}
-              <strong className="font-semibold text-white">{escritoriosInteriores.join(" e ")}</strong>, executando o
-              desenho como ele foi pensado.
-            </p>
           </div>
         </section>
 
         {/* Por que a RB Sheeny */}
         <section aria-labelledby="motivos-titulo" className="mx-auto max-w-[1320px] px-4 py-24 sm:px-8 md:py-32">
           <div className="grid gap-12 md:grid-cols-12 md:gap-8">
-            <h2
-              id="motivos-titulo"
-              className="text-[clamp(2.125rem,4.4vw,3.5rem)] leading-[1.02] font-semibold tracking-[-0.03em] md:col-span-5"
-            >
-              Lançamento não espera. <span className="accent text-red">Acabamento também não.</span>
-            </h2>
+            <div className="flex flex-col gap-10 md:col-span-5">
+              <h2
+                id="motivos-titulo"
+                className="text-[clamp(2.125rem,4.4vw,3.5rem)] leading-[1.02] font-semibold tracking-[-0.03em]"
+              >
+                Lançamento não espera. <span className="accent text-red">Acabamento também não.</span>
+              </h2>
+              {/* A foto ocupa o que sobra ao lado da sanfona, então as duas colunas terminam juntas. */}
+              <div className="relative hidden min-h-[200px] flex-1 overflow-hidden bg-stone md:block">
+                <Image
+                  src={fotosApoio.motivos.foto}
+                  alt={fotosApoio.motivos.alt}
+                  fill
+                  sizes="36vw"
+                  className="object-cover"
+                />
+                <span className="absolute right-3 bottom-3 bg-ink/70 px-2 py-1 text-[11px] font-medium text-white/90">
+                  Imagem ilustrativa
+                </span>
+              </div>
+            </div>
             <div className="md:col-span-7">
-              {motivos.map((m, i) => (
+              {motivos.filter((m) => m.ativo).map((m, i) => (
                 <details key={m.titulo} name="motivos" open={i === 0} className="faq group border-t border-line last:border-b">
                   <summary className="flex min-h-18 items-center justify-between gap-6 py-5">
                     <span className="text-[clamp(1.125rem,1.8vw,1.375rem)] font-medium">{m.titulo}</span>
@@ -299,7 +323,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col gap-3 border-t border-white/12 pt-6 text-sm text-white/55 sm:flex-row sm:justify-between">
             <span>
-              {empresa.razaoSocial} · CNPJ {empresa.cnpj}
+              {empresa.razaoSocial} · <span className="whitespace-nowrap">CNPJ {empresa.cnpj}</span>
             </span>
             <a href={credito.link} target="_blank" rel="noopener" className="hover:text-white">
               {credito.texto}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:00:00-03:00",
+  "title": "Design System: RB Sheeny",
+  "extensions": {
+    "colorMeta": {
+      "red": { "role": "primary", "displayName": "Logo Burgundy", "canonical": "#a12032", "tonalRamp": ["#3a0b12", "#5c111d", "#83192a", "#a12032", "#c2465a", "#d98694", "#f0c9ce", "#f6e7e9"] },
+      "red-deep": { "role": "primary", "displayName": "Deep Burgundy", "canonical": "#83192a", "tonalRamp": ["#3a0b12", "#5c111d", "#83192a", "#a12032", "#c2465a", "#d98694", "#f0c9ce", "#f6e7e9"] },
+      "red-tint": { "role": "primary", "displayName": "Burgundy Wash", "canonical": "#f6e7e9", "tonalRamp": ["#3a0b12", "#5c111d", "#83192a", "#a12032", "#c2465a", "#d98694", "#f0c9ce", "#f6e7e9"] },
+      "blush": { "role": "primary", "displayName": "Blush", "canonical": "#f0c9ce", "tonalRamp": ["#3a0b12", "#5c111d", "#83192a", "#a12032", "#c2465a", "#d98694", "#f0c9ce", "#f6e7e9"] },
+      "ink": { "role": "neutral", "displayName": "Warm Ink", "canonical": "#16120f", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#e2ddd8", "#f2f0ed"] },
+      "ink-soft": { "role": "neutral", "displayName": "Ink Soft", "canonical": "#2b2522", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#e2ddd8", "#f2f0ed"] },
+      "muted": { "role": "neutral", "displayName": "Muted Umber", "canonical": "#625b58", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#e2ddd8", "#f2f0ed"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#e2ddd8", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#e2ddd8", "#f2f0ed"] },
+      "stone": { "role": "neutral", "displayName": "Stone", "canonical": "#f2f0ed", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#e2ddd8", "#f2f0ed"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#ffffff", "tonalRamp": ["#16120f", "#2b2522", "#453d39", "#625b58", "#857d79", "#c9c2bd", "#f2f0ed", "#ffffff"] },
+      "whats": { "role": "tertiary", "displayName": "WhatsApp Green", "canonical": "#25d366", "tonalRamp": ["#0a3a1c", "#10592b", "#16803e", "#1ea851", "#25d366", "#6fe39a", "#b0f0c7", "#e3fbeb"] }
+    },
+    "typographyMeta": {
+      "display-hero": { "displayName": "Display Hero", "purpose": "The one hero headline over the photograph, max 11ch." },
+      "display": { "displayName": "Display", "purpose": "Section headings for portfolio, services and contact; wide Archivo echoing the wordmark." },
+      "accent": { "displayName": "Accent Italic", "purpose": "Exactly one italic serif phrase per major heading." },
+      "headline": { "displayName": "Headline", "purpose": "Headings that sit beside other content (reasons) and service titles." },
+      "statement": { "displayName": "Statement", "purpose": "About-section positioning paragraph." },
+      "numeral": { "displayName": "Numeral", "purpose": "Confirmed facts only, tabular figures over a muted label." },
+      "title": { "displayName": "Title", "purpose": "Project names and accordion questions." },
+      "body": { "displayName": "Body", "purpose": "Running copy, 46 to 56ch." },
+      "label": { "displayName": "Label", "purpose": "Nav links, chips, filter labels, counts, captions." },
+      "tag": { "displayName": "Tag", "purpose": "Uppercase project-type tag on a portfolio photograph only." }
+    },
+    "shadows": [
+      { "name": "card-float", "value": "0 24px 60px -20px rgba(22,18,15,0.35)", "purpose": "Hero filter card overlapping the photograph." },
+      { "name": "red-float", "value": "0 12px 30px -8px rgba(131,25,42,0.55)", "purpose": "Floating WhatsApp button." },
+      { "name": "header-rule", "value": "0 1px 0 var(--color-line)", "purpose": "Hairline under the solid header; a rule, not elevation." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default curve for presses, reveals, zoom, accordion." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Portfolio View Transition (420ms)." },
+      { "name": "press", "value": "transform 160ms ease-out, scale(0.97)", "purpose": "Active state of buttons and chips." },
+      { "name": "state", "value": "200ms ease", "purpose": "Colour and border changes." },
+      { "name": "rise", "value": "900ms ease-out, translateY(18px) to 0, stagger 90ms + 120ms", "purpose": "Hero entrance cascade, runs without JavaScript." },
+      { "name": "settle", "value": "1800ms ease-out, scale(1.06) to 1", "purpose": "Hero photograph entrance." },
+      { "name": "zoom", "value": "900ms ease-out, scale(1.04)", "purpose": "Portfolio photo on fine-pointer hover." },
+      { "name": "marquee", "value": "38s linear infinite", "purpose": "Developer strip; paused on hover, static under reduced motion." },
+      { "name": "accordion", "value": "block-size 320ms ease-out", "purpose": "details-content open animation where supported." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ],
+    "constraints": [
+      "CSS-only motion; no framer-motion or animation runtime; no large blur; backdrop-filter only from sm (640px). Reference device: Galaxy J7 Prime.",
+      "Project path contains a space (\"RB Sheeny\"): globals.css must keep @source \"../**/*.{ts,tsx}\"; or Tailwind 4 drops custom classes."
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Red WhatsApp pill; the main action on light or photo ground.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z\"/></svg>Falar no WhatsApp</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 999px; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.9375rem; line-height: 1; white-space: nowrap; text-decoration: none; border: 0; cursor: pointer; transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 200ms ease, color 200ms ease, border-color 200ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; } .ds-btn-primary { background: var(--color-red, #a12032); color: #fff; } .ds-btn-primary:hover { background: var(--color-red-deep, #83192a); }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Secondary action on white: filter card, form submit, solid header CTA.",
+      "html": "<button class=\"ds-btn-ink\">Ver 7 projetos <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14M6 13l6 6 6-6\"/></svg></button>",
+      "css": ".ds-btn-ink { display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 999px; border: 0; background: var(--color-ink, #16120f); color: #fff; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.9375rem; line-height: 1; cursor: pointer; transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 200ms ease; } .ds-btn-ink:hover { background: var(--color-ink-soft, #2b2522); } .ds-btn-ink:active { transform: scale(0.97); } .ds-btn-ink:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button on Photo",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Secondary action over the hero photograph.",
+      "html": "<div class=\"ds-photo-ground\"><a class=\"ds-btn-outline\" href=\"#\">Ver portfólio</a></div>",
+      "css": ".ds-photo-ground { background: var(--color-ink, #16120f); padding: 24px; } .ds-btn-outline { display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5); color: #fff; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: background-color 200ms ease, border-color 200ms ease, transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); } .ds-btn-outline:active { transform: scale(0.97); } .ds-btn-outline:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Project-type toggle; pressed state fills ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Todos</button><button class=\"ds-chip\" aria-pressed=\"false\">Stands</button><button class=\"ds-chip\" aria-pressed=\"false\">Decorados</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; } .ds-chip { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.125rem; border-radius: 999px; border: 1px solid var(--color-line, #e2ddd8); background: transparent; color: var(--color-ink, #16120f); font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 0.9375rem; font-weight: 500; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-chip:active { transform: scale(0.97); } .ds-chip[aria-pressed=\"true\"] { background: var(--color-ink, #16120f); border-color: var(--color-ink, #16120f); color: #fff; } .ds-chip[aria-pressed=\"false\"]:hover { border-color: var(--color-ink, #16120f); } .ds-chip:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Square stone field; focus turns white with an ink border, error washes burgundy.",
+      "html": "<label class=\"ds-field-wrap\"><span class=\"ds-field-label\">Seu nome</span><input class=\"ds-field\" placeholder=\"Nome completo\"></label>",
+      "css": ".ds-field-wrap { display: flex; flex-direction: column; gap: 0.5rem; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; } .ds-field-label { font-size: 0.875rem; font-weight: 500; color: var(--color-ink, #16120f); } .ds-field { width: 100%; min-height: 3.25rem; padding: 0 1rem; border: 1px solid var(--color-line, #e2ddd8); border-radius: 0; background: var(--color-stone, #f2f0ed); color: var(--color-ink, #16120f); font-size: 16px; caret-color: var(--color-red, #a12032); transition: border-color 200ms ease, background-color 200ms ease; } .ds-field::placeholder { color: #857d79; } .ds-field:focus { outline: none; border-color: var(--color-ink, #16120f); background: #fff; } .ds-field[aria-invalid=\"true\"] { border-color: var(--color-red, #a12032); background: var(--color-red-tint, #f6e7e9); }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "button-compact",
+      "description": "Solid state of the fixed header: black logo, muted links, ink WhatsApp pill, hairline rule.",
+      "html": "<header class=\"ds-nav\"><strong class=\"ds-nav-logo\">RB SHEENY</strong><nav class=\"ds-nav-links\"><a href=\"#\">Portfólio</a><a href=\"#\">Serviços</a><a href=\"#\">Sobre</a><a href=\"#\">Contato</a></nav><a class=\"ds-nav-cta\" href=\"#\">WhatsApp</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 5rem; padding: 0 2rem; background: #fff; color: var(--color-ink, #16120f); box-shadow: 0 1px 0 var(--color-line, #e2ddd8); font-family: Archivo, ui-sans-serif, system-ui, sans-serif; } .ds-nav-logo { font-weight: 800; font-variation-settings: 'wdth' 118; letter-spacing: -0.035em; } .ds-nav-links { display: flex; gap: 2.25rem; } .ds-nav-links a { color: inherit; font-size: 0.9375rem; font-weight: 500; opacity: 0.8; text-decoration: none; text-underline-offset: 0.2em; transition: opacity 200ms ease; } .ds-nav-links a:hover { opacity: 1; text-decoration: underline; } .ds-nav-cta { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.25rem; border-radius: 999px; background: var(--color-ink, #16120f); color: #fff; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: background-color 200ms ease; } .ds-nav-cta:hover { background: var(--color-ink-soft, #2b2522); } .ds-nav a:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "tag-project-type",
+      "description": "Signature portfolio card: square photo, type tag, illustrative label, name, developer, WhatsApp well that fills red on hover.",
+      "html": "<a class=\"ds-project\" href=\"#\"><div class=\"ds-project-photo\"><span class=\"ds-project-tag\">Stand de vendas</span><span class=\"ds-project-ill\">Imagem ilustrativa</span></div><div class=\"ds-project-meta\"><div><h3>Stand Cyrela Concept</h3><p>Cyrela</p></div><span class=\"ds-project-well\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z\"/></svg></span></div></a>",
+      "css": ".ds-project { display: block; width: 320px; color: var(--color-ink, #16120f); text-decoration: none; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; } .ds-project-photo { position: relative; aspect-ratio: 4/5; background: linear-gradient(160deg, #c9c2bd, #625b58); overflow: hidden; transition: transform 900ms cubic-bezier(0.23,1,0.32,1); } .ds-project-tag { position: absolute; top: 1rem; left: 1rem; background: #fff; padding: 0.5rem 0.75rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; } .ds-project-ill { position: absolute; right: 0.75rem; bottom: 0.75rem; background: rgba(22,18,15,0.7); color: rgba(255,255,255,0.9); padding: 0.25rem 0.5rem; font-size: 11px; font-weight: 500; } .ds-project-meta { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-top: 1rem; } .ds-project-meta h3 { margin: 0; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; } .ds-project-meta p { margin: 0.25rem 0 0; font-size: 0.9375rem; color: var(--color-muted, #625b58); } .ds-project-well { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex-shrink: 0; border-radius: 999px; border: 1px solid var(--color-line, #e2ddd8); transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease; } .ds-project:hover .ds-project-well { background: var(--color-red, #a12032); border-color: var(--color-red, #a12032); color: #fff; } .ds-project:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; }"
+    },
+    {
+      "name": "Display Heading with Accent",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Wide heavy Archivo heading with exactly one italic serif phrase in red.",
+      "html": "<h2 class=\"ds-display\">Projetos <span class=\"ds-accent\">entregues</span></h2>",
+      "css": ".ds-display { margin: 0; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 800; font-variation-settings: 'wdth' 118; letter-spacing: -0.035em; line-height: 0.92; color: var(--color-ink, #16120f); text-wrap: balance; } .ds-accent { font-family: 'Instrument Serif', ui-serif, Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; font-variation-settings: normal; color: var(--color-red, #a12032); }"
+    },
+    {
+      "name": "Accordion Row",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Exclusive details row between hairlines with a rotating red plus.",
+      "html": "<details class=\"ds-faq\" open><summary><span>Prazo de lançamento</span><span class=\"ds-faq-icon\">+</span></summary><p>O stand fica pronto no dia do lançamento.</p></details>",
+      "css": ".ds-faq { border-top: 1px solid var(--color-line, #e2ddd8); border-bottom: 1px solid var(--color-line, #e2ddd8); font-family: Archivo, ui-sans-serif, system-ui, sans-serif; color: var(--color-ink, #16120f); } .ds-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4.5rem; padding: 1.25rem 0; list-style: none; cursor: pointer; font-size: 1.25rem; font-weight: 500; } .ds-faq summary::-webkit-details-marker { display: none; } .ds-faq summary:focus-visible { outline: 2px solid var(--color-red, #a12032); outline-offset: 3px; } .ds-faq-icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--color-line, #e2ddd8); color: var(--color-red, #a12032); font-size: 1.25rem; transition: transform 240ms cubic-bezier(0.23,1,0.32,1); } .ds-faq[open] .ds-faq-icon { transform: rotate(45deg); } .ds-faq p { max-width: 56ch; margin: 0; padding-bottom: 1.75rem; font-size: 1.0625rem; line-height: 1.625; color: var(--color-muted, #625b58); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Showroom Window",
+    "overview": "RB Sheeny builds the first place a buyer sees a building, so the site behaves like a vitrine: a white, well-lit room where photographs of finished interiors do all the texturing and the type does the selling. The world is the category standard for a premium niche contractor, executed with editorial craft: a full-bleed interior photograph, a white filter card overlapping its edge, a strip of developer names, facts set large, a featured-then-grid portfolio, a dark services band, an accordion of reasons, and one fully red contact block.\n\nDensity is generous. Sections breathe on 96 to 128px of vertical space, content sits in a 1320px container on a 12-column grid, and every divider is a 1px hairline. Colour is almost entirely ink on white and stone; the logo's burgundy red is the only chroma and is spent in a few places: the primary WhatsApp action, the italic accent word on light ground, small square markers, and the drenched contact section.\n\nThe site must stay light on low-end Android (the reference device is a Galaxy J7 Prime). All motion is CSS: no framer-motion or other animation runtime, no large blur, and `backdrop-filter` only from the `sm:` breakpoint up.",
+    "keyCharacteristics": [
+      "White ground, stone secondary surface, warm near-black ink, a single burgundy accent.",
+      "Wide, heavy Archivo display caps echoing the logo wordmark, with one italic Instrument Serif phrase per major heading.",
+      "Square corners on photographs, cards, inputs and tabs; pill shapes only for buttons, chips and circular icon wells.",
+      "Photography is the only texture; every stock image carries a visible \"Imagem ilustrativa\" label.",
+      "CSS-only motion: staggered hero rise, slow photo settle, marquee, hover zoom, View Transition on the portfolio filter, all reduced-motion safe."
+    ],
+    "rules": [
+      { "name": "The One Chroma Rule", "body": "Burgundy is the only chromatic colour in the interface. Green exists only as the WhatsApp mark; everything else is ink, stone, line or white.", "section": "colors" },
+      { "name": "The Drenched Block Rule", "body": "Red appears as a full surface exactly once per page: the contact section. Everywhere else it is an accent at button or word scale.", "section": "colors" },
+      { "name": "The One Italic Phrase Rule", "body": "Each major heading carries exactly one italic serif phrase, usually the verb or the closing words (\"vende\", \"entregues\", \"bem feitas\", \"começa aqui.\"). Red on light ground, blush on dark ground, white on the red block. Never two in one heading, never in body copy.", "section": "typography" },
+      { "name": "The Wordmark Width Rule", "body": "Display width (`wdth` 118, weight 800) is reserved for headlines and the developer marquee (`wdth` 112, 700). Body, labels and titles stay at normal width.", "section": "typography" },
+      { "name": "The Only-What-Floats Rule", "body": "A shadow is allowed only on an element that physically overlaps other content. Cards in flow, photos and panels stay flat.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep motion CSS-only: keyframes, transitions and the View Transition API. Every animation has a `prefers-reduced-motion` fallback.",
+      "Do keep `backdrop-filter` behind the `sm:` breakpoint and keep blur radii small; the site must stay smooth on a Galaxy J7 Prime.",
+      "Do keep the `@source \"../**/*.{ts,tsx}\";` line at the top of `globals.css`. The project path contains a space (\"RB Sheeny\"), and without it Tailwind 4 silently drops the custom classes.",
+      "Do put exactly one italic serif phrase in each major heading, in red on light, blush on dark, white on red.",
+      "Do label every stock photograph \"Imagem ilustrativa\".",
+      "Do use 1px hairlines for every division and square corners for every photo, panel and input.",
+      "Do gate hover effects behind `(hover: hover) and (pointer: fine)`."
+    ],
+    "donts": [
+      "Don't add framer-motion or any JavaScript animation runtime, and don't use large blurs.",
+      "Don't introduce a second chromatic colour; WhatsApp green stays a glyph.",
+      "Don't round photographs, cards or inputs, and don't square off buttons or chips.",
+      "Don't add shadows to in-flow cards or photos; only elements that overlap content may cast one.",
+      "Don't set body copy, labels or titles in the wide display width.",
+      "Don't add a small uppercase label above headings; the only uppercase tracked text in the system is the project-type tag on a photograph."
+    ]
+  }
+}

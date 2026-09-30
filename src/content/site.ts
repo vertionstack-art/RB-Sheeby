@@ -131,26 +131,48 @@ export const servicos = [
   },
 ] as const;
 
+/** Fotos de apoio das seções "Sobre" e "Por que a RB Sheeny". */
+export const fotosApoio = {
+  sobre: {
+    foto: unsplash("photo-1600607687644-c7171b42498f"),
+    alt: "Quarto de apartamento decorado com cama de casal, luminária e porta de vidro para o jardim",
+  },
+  motivos: {
+    foto: unsplash("photo-1631679706909-1844bbd07221"),
+    alt: "Sala decorada em tons claros com espelhos de palha, sofá e poltrona",
+  },
+};
+
+/**
+ * Motivos da sanfona "Por que a RB Sheeny".
+ * `ativo: false` esconde o item sem apagar o texto (os dois desligados são frases genéricas;
+ * religue quando houver um fato concreto para contar, como um material ou método usado numa obra).
+ */
 export const motivos = [
   {
+    ativo: true,
     titulo: "Só stands e decorados",
     texto: "É o único trabalho que fazemos. Conhecemos o ritmo de um lançamento e o que ele exige de uma obra.",
   },
   {
+    ativo: true,
     titulo: "Prazo curto, acabamento de vitrine",
     texto:
       "O stand precisa estar pronto no dia do lançamento, e o decorado precisa convencer quem entra. Trabalhamos para os dois.",
   },
   {
+    ativo: false,
     titulo: "Materiais e tecnologias modernas",
     texto: "Qualidade, agilidade e inovação guiam cada escolha de material e de método construtivo.",
   },
   {
+    ativo: true,
     titulo: "Lado a lado com a arquitetura",
     texto:
       "Executamos projetos de escritórios de interiores como Fernanda Marques e Carol Miluzzi, respeitando cada detalhe do desenho.",
   },
   {
+    ativo: false,
     titulo: "Atendimento próximo",
     texto: "Projetos complexos pedem atenção aos detalhes e um interlocutor que acompanha a obra de perto.",
   },

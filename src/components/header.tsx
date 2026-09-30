@@ -36,7 +36,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)] transition-[background-color,box-shadow,color] duration-300 ${
-        claro ? "bg-white/95 text-ink shadow-[0_1px_0_var(--color-line)] sm:backdrop-blur-md" : "bg-transparent text-white"
+        claro ? "bg-white text-ink shadow-[0_1px_0_var(--color-line)] sm:bg-white/95 sm:backdrop-blur-md" : "bg-transparent text-white"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-4 px-4 sm:h-20 sm:px-8">

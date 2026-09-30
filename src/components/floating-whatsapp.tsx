@@ -33,7 +33,7 @@ export function FloatingWhatsApp() {
       aria-label="Falar com a RB Sheeny no WhatsApp"
       tabIndex={visivel ? 0 : -1}
       aria-hidden={!visivel}
-      className={`btn fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-30 bg-whats text-[#07331a] shadow-[0_12px_30px_-8px_rgba(7,51,26,0.45)] transition-[opacity,transform] duration-300 sm:right-6 sm:bottom-6 ${
+      className={`btn fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-30 bg-red text-white shadow-[0_12px_30px_-8px_rgba(131,25,42,0.55)] hover:bg-red-deep transition-[opacity,transform] duration-300 sm:right-6 sm:bottom-6 ${
         visivel ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

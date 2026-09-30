@@ -80,7 +80,7 @@ export function useFiltro() {
 
 export const contagem = (n: number) => (n === 0 ? "Nenhum projeto" : n === 1 ? "1 projeto" : `${n} projetos`);
 
-export function TipoChips({ tamanho = "md" }: { tamanho?: "md" | "sm" }) {
+export function TipoChips({ tamanho = "md", compacto = false }: { tamanho?: "md" | "sm"; compacto?: boolean }) {
   const { tipo, setTipo } = useFiltro();
   return (
     <div className="flex flex-wrap gap-2" role="group" aria-label="Tipo de projeto">
@@ -88,7 +88,7 @@ export function TipoChips({ tamanho = "md" }: { tamanho?: "md" | "sm" }) {
         <button
           key={t.valor}
           type="button"
-          className={`chip ${tamanho === "sm" ? "min-h-10! px-4!" : ""}`}
+          className={`chip ${tamanho === "sm" ? "px-4!" : ""} ${compacto ? "md:min-h-11" : ""}`}
           aria-pressed={tipo === t.valor}
           onClick={() => setTipo(t.valor)}
         >
@@ -99,10 +99,10 @@ export function TipoChips({ tamanho = "md" }: { tamanho?: "md" | "sm" }) {
   );
 }
 
-export function IncorporadoraSelect({ id }: { id: string }) {
+export function IncorporadoraSelect({ id, compacto = false }: { id: string; compacto?: boolean }) {
   const { incorporadora, setIncorporadora } = useFiltro();
   return (
-    <select id={id} className="field" value={incorporadora} onChange={(e) => setIncorporadora(e.target.value)}>
+    <select id={id} className={`field ${compacto ? "md:min-h-11" : ""}`} value={incorporadora} onChange={(e) => setIncorporadora(e.target.value)}>
       <option value="Todas">Todas as incorporadoras</option>
       {incorporadorasDoPortfolio.map((i) => (
         <option key={i} value={i}>
